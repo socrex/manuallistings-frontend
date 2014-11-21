@@ -1,5 +1,8 @@
 <div>
   <form ng-submit="onSubmitNewListing();">
+    <label for="listingURL">URL</label>
+    <input type="text" ng-model="listingFormData.url" id="listingURL" size="100" required>
+    </br>
     <label for="listingTitle">Title</label>
     <input type="text" ng-model="listingFormData.title" id="listingTitle" size="100" required>
     </br>
@@ -7,19 +10,22 @@
     <input type="text" ng-model="listingFormData.address"  id="exampleInputEmail1" size="100" required>
     </br>
     <label for="listingDescription">Description</label>
-    <textarea id="listingDescription" ng-model="listingFormData.description" cols="50" rows="5" required></textarea>
+    <textarea id="listingDescription" ng-model="listingFormData.body" cols="50" rows="5" required></textarea>
     </br>
     <label for="listingBathroom">Bathroom</label>
     <input type="number" id="listingBathroom" ng-model="listingFormData.bathrooms" required >
     <label for="listingBedroom">Bedroom</label>
     <input type="number" id="listingBedroom" ng-model="listingFormData.bedrooms" required >
     </br>
-    <label > Lat and long separated by comma</label>
+    <label for="listingMovein">Move In</label>
+    <input type="date" id="listingMovein" ng-model="listingFormData.move_in" required >
+    </br>
+    <label > Lat and long separated by dot</label>
     </br>
     <label for="listingLatitude">Latitude</label>
-    <input type="text" id="listingLatitude" ng-model="listingFormData.latitude" placeholder="30,00000" required >
+    <input type="text" id="listingLatitude" ng-model="listingFormData.latitude" placeholder="44.345" pattern="-?\d{1,3}\.\d+"required >
     <label for="listingLongitude">Longitude</label>
-    <input type="text" id="listingLongitude" ng-model="listingFormData.longitude" placeholder="150,00000" required >
+    <input type="text" id="listingLongitude" ng-model="listingFormData.longitude" placeholder="-71.567" pattern="-?\d{1,3}\.\d+" required >
     <label for="listingPrice">Price</label>
     <input type="number"  id="listingPrice" ng-model="listingFormData.price" required>
     </br>
@@ -30,40 +36,41 @@
     <label for="listingPictures">Pictures (add the urls of the image separated by comma)</label>
     <input type="text" id="listingPictures" size="200" ng-model="listingFormData.picturesString" placeholder="http://photos/image01.jpg, http://photos/image02.jpg, http://photos/image03.jpg"required>
     </br>
-    <input type="checkbox" ng-model="listingFormData.ameneties" > Amenities
+    <input type="checkbox" ng-model="listingFormData.amenities" ng-true-value="1" ng-false-value="0" > Amenities
     &nbsp; &nbsp; &nbsp;
-    <input type="checkbox" ng-model="listingFormData.cieling" > Ceiling
+    <input type="checkbox" ng-model="listingFormData.cieling" ng-true-value="1" ng-false-value="0" > Ceiling
     &nbsp; &nbsp; &nbsp;
-    <input type="checkbox" ng-model="listingFormData.classic"> Classic
+    <input type="checkbox" ng-model="listingFormData.classic" ng-true-value="1" ng-false-value="0"> Classic
     &nbsp; &nbsp; &nbsp;
-    <input type="checkbox" ng-model="listingFormData.deck_balcony"> Deck Balcony
+    <input type="checkbox" ng-model="listingFormData.deck_balcony" ng-true-value="1" ng-false-value="0"> Deck Balcony
     &nbsp; &nbsp; &nbsp;
-    <input type="checkbox" ng-model="listingFormData.hardwood" > Hardwood
+    <input type="checkbox" ng-model="listingFormData.hardwood" ng-true-value="1" ng-false-value="0" > Hardwood
     &nbsp; &nbsp; &nbsp;
-    <input type="checkbox" ng-model="listingFormData.kitchen" > Kitchen
+    <input type="checkbox" ng-model="listingFormData.kitchen" ng-true-value="1" ng-false-value="0" > Kitchen
     &nbsp; &nbsp; &nbsp;
-    <input type="checkbox" ng-model="listingFormData.laundry"> Laundry
+    <input type="checkbox" ng-model="listingFormData.laundry" ng-true-value="1" ng-false-value="0"> Laundry
     </br>
-    <input type="checkbox" ng-model="listingFormData.lighting"> Lighting
+    <input type="checkbox" ng-model="listingFormData.lighting" ng-true-value="1" ng-false-value="0"> Lighting
     &nbsp; &nbsp; &nbsp;
-    <input type="checkbox" ng-model="listingFormData.loft"> Loft
+    <input type="checkbox" ng-model="listingFormData.loft" ng-true-value="1" ng-false-value="0"> Loft
     &nbsp; &nbsp; &nbsp;
-    <input type="checkbox" ng-model="listingFormData.modern"> Modern
+    <input type="checkbox" ng-model="listingFormData.modern" ng-true-value="1" ng-false-value="0"> Modern
     &nbsp; &nbsp; &nbsp;
-    <input type="checkbox" ng-model="listingFormData.parking"> Parking
+    <input type="checkbox" ng-model="listingFormData.parking" ng-true-value="1" ng-false-value="0"> Parking
     &nbsp; &nbsp; &nbsp;
-    <input type="checkbox" ng-model="listingFormData.pet"> Pet
+    <input type="checkbox" ng-model="listingFormData.pet" ng-true-value="1" ng-false-value="0"> Pet
     &nbsp; &nbsp; &nbsp;
-    <input type="checkbox" ng-model="listingFormData.spacing"> Spacing
+    <input type="checkbox" ng-model="listingFormData.spacing" ng-true-value="1" ng-false-value="0"> Spacing
     &nbsp; &nbsp; &nbsp;
-    <input type="checkbox" ng-model="listingFormData.studio"> Studio
+    <input type="checkbox" ng-model="listingFormData.studio" ng-true-value="1" ng-false-value="0"> Studio
     &nbsp; &nbsp; &nbsp;
-    <input type="checkbox" ng-model="listingFormData.sublet_roomate"> Sublet - Roomate
+    <input type="checkbox" ng-model="listingFormData.sublet_roomate" ng-true-value="1" ng-false-value="0"> Sublet - Roomate
     &nbsp; &nbsp; &nbsp;
-    <input type="checkbox" ng-model="listingFormData.view"> View
+    <input type="checkbox" ng-model="listingFormData.view" ng-true-value="1" ng-false-value="0"> View
     </br>
-    <button type="submit" class="btn btn-default">Submit</button>
+    <button type="submit" class="btn btn-default" ng-true-value="1" ng-false-value="0">Submit</button>
 </form>
+Message : <input type="text" size="200" ng-model="statusMessage" placeholder="" readonly>
 </div>
 <!--
 
