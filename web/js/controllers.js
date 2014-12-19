@@ -70,3 +70,51 @@ socrexControllers.controller('newListingFormCtrl', ['$scope' , '$rootScope' , '$
     }
 
 }]);
+
+
+
+
+
+
+
+
+
+
+
+
+
+socrexControllers.controller('addShortlistFormCtrl', ['$scope' , '$rootScope' , '$http' , '$location', function ($scope, $rootScope, $http, $location) {
+
+    $scope.listingFormData = {};
+    $scope.statusMessage = "";
+
+
+    $scope.onSubmitRecommend = function(){
+        $scope.addShortlist($scope.formData);
+    }
+
+    $scope.addShortlist = function(requestObj){
+        // do call to server to save preferences
+        $scope.statusMessage = "Saving listing into database ... ";
+        var responsePromise = $http({
+            //url: 'http://127.0.0.1:5000/listings/filter', 
+            url: 'http://byopapp-api-dev.herokuapp.com/recommend',
+            //url: 'http://0.0.0.0:8080/listings',
+            method: 'POST',
+            data: $.param(requestObj),
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+        });
+
+        responsePromise.success(function(data, status, headers, config) {
+            $scope.statusMessage = "The listing was succesfully saved";
+            $scope.listingFormData = {};
+            console.log("Succeeded response");
+        });
+        
+        responsePromise.error(function(data, status, headers, config) {
+            $scope.statusMessage = "There was an error saving the listing, please try again";
+            console.log("Succeeded response - error");
+        }); 
+    }
+
+}]);

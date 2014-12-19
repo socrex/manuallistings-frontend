@@ -10,6 +10,8 @@ angular.module('socrex', [
   'socrex.controllers'
 ]).
 config(['$routeProvider', function($routeProvider) {
+  $routeProvider.when('/', {templateUrl: 'partials/new.html', controller: 'newListingFormCtrl'});
   $routeProvider.when('/listing/', {templateUrl: 'partials/new.html', controller: 'newListingFormCtrl'});
+  $routeProvider.when('/addshortlist', {templateUrl: 'partials/addshortlist.html', controller: 'addShortlistFormCtrl'});
 }]);
 
