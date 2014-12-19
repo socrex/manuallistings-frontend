@@ -47,6 +47,7 @@ socrexControllers.controller('newListingFormCtrl', ['$scope' , '$rootScope' , '$
         var responsePromise = $http({
             //url: 'http://127.0.0.1:5000/listings/filter', 
             url: 'http://byopapp-api-dev.herokuapp.com/listings',
+            //url: 'http://0.0.0.0:8080/listings',
             method: 'POST',
             data: $.param(requestObj),
             headers: {'Content-Type': 'application/x-www-form-urlencoded'}
@@ -54,6 +55,7 @@ socrexControllers.controller('newListingFormCtrl', ['$scope' , '$rootScope' , '$
 
         responsePromise.success(function(data, status, headers, config) {
             $scope.statusMessage = "The listing was succesfully saved";
+            $scope.listingLink = "http://www.gotrotter.com/#/listingDetails/" + data.Data._id.$oid
             $scope.listingFormData = {};
             console.log("Succeeded response");
             //$rootScope.currentListingFilter = data.Data.PreferenceId.$oid;
